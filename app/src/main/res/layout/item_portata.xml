@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="30dp"
+    android:layout_height="150dp">
+
+    <ImageView
+        android:scaleType="fitStart"
+        android:layout_alignBaseline="@+id/recycleText"
+        android:layout_below="@+id/recycleText"
+        android:src="@drawable/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycleImage"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycleText"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:text="prova"/>
+
+    <me.angrybyte.numberpicker.view.ActualNumberPicker
+        android:layout_below="@+id/recycleText"
+        android:layout_alignParentRight="true"
+        android:id="@+id/actual_picker"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+
+
+        app:bar_width="1dp"
+        app:bars_count="26"
+        app:controls_color="@color/colorPrimary"
+        app:draw_over_controls="true"
+        app:draw_over_text="false"
+        app:show_fast_controls="false"
+
+        app:max_value="20"
+        app:min_value="0"
+        app:selection_color="#A0FF3040"
+        app:show_bars="false"
+        app:show_controls="true"
+        app:show_highlight="false"
+        app:show_text="true"
+        app:text_color="@android:color/background_dark"
+        app:text_size="16sp"
+        app:value="0"/>
+
+</RelativeLayout>

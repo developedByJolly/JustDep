@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DEPone</string>
+<string name="email">insert email</string>
+    <string name="password">insert password</string>
+    <string name="pswdconfirm">confirm password</string>
+    <string name="register">register</string>
+    <string name="welcome">welcome</string>
+    <string name="phone">phone number</string>
+    <string name="emailconfirm">confirm email</string>
+    <string name="scrittaProgressbar">Totale:</string>
+    <string name="scrittaProgressbarDestra">Minimo:</string>
+
+    </resources>
