@@ -3,7 +3,7 @@ package com.example.gioele.depone.activities.datamodel;
 public class Resturant {
 
 
-    private float minimo;
+    private int minimo;
     private String nome;
     private String image;
 
@@ -23,7 +23,7 @@ public class Resturant {
         this.nome = nome;
     }
 
-    public void setMinimo(float minimo) {
+    public void setMinimo(int minimo) {
         this.minimo = minimo;
     }
 
@@ -34,14 +34,14 @@ public class Resturant {
         return nome;
     }
 
-    public float getMinimo() {
+    public int getMinimo() {
         return minimo;
     }
 
 
 
 
-    public Resturant(String nome, float minimo, String image) {
+    public Resturant(String nome, int minimo, String image) {
         this.image = image;
         this.nome = nome;
         this.minimo = minimo;

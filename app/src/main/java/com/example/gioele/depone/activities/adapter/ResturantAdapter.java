@@ -30,7 +30,6 @@ public class ResturantAdapter extends RecyclerView.Adapter{
     public ResturantAdapter(Context context, ArrayList<Resturant> data ) {
         this.data = data;
         this.context=context;
-
         this.inflater= LayoutInflater.from(context);
     }
 
@@ -46,6 +45,7 @@ public class ResturantAdapter extends RecyclerView.Adapter{
 
         rHolder vh = (rHolder) holder;
         Resturant item = data.get(position);
+        vh.minimo.setText( String.valueOf(data.get(position).getMinimo()));
         vh.name.setText(data.get(position).getNome());
         Glide.with(context).
                 load(data.get(position).getImage()).into(vh.image);
@@ -62,11 +62,12 @@ public class ResturantAdapter extends RecyclerView.Adapter{
     public class rHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public ImageView image;
+        public TextView minimo;
 
         public rHolder(final View view) {
             super(view);
-
-            name = (TextView) view.findViewById(R.id.testo);
+            minimo = view.findViewById(R.id.minimo);
+            name =  view.findViewById(R.id.testo);
             image = view.findViewById(R.id.rimage);
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,7 @@ public class ResturantAdapter extends RecyclerView.Adapter{
 
                    Intent intent = new Intent(context,CheckoutActivity.class);
                     intent.putExtra("nome",name.getText());
-
+                    intent.putExtra("minimo", minimo.getText().toString());
                     context.startActivity(intent);
                 }
             });

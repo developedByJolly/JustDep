@@ -37,6 +37,16 @@
 
                     android:id="@+id/testo"
                     android:textStyle="bold"
+                    android:text="roba"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="92dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp" />
+                <TextView
+
+                    android:id="@+id/minimo"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="92dp"
                     android:layout_gravity="center"
