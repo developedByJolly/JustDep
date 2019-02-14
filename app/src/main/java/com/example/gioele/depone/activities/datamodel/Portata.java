@@ -1,5 +1,9 @@
 package com.example.gioele.depone.activities.datamodel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Portata {
 
     private String nome;
@@ -12,7 +16,14 @@ public class Portata {
     private double prezzo;
 
 
+public Portata(JSONObject jsonRestaurant) throws JSONException{
 
+
+    nome = jsonRestaurant.getString("name");
+
+
+    image = jsonRestaurant.getString("image_url");
+}
     public void setPrezzo(int prezzo) {
         this.prezzo = prezzo;
     }

@@ -1,4 +1,4 @@
-package com.example.gioele.depone.activities.datamodel;
+package com.example.gioele.depone.activities.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,21 +6,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.gioele.depone.R;
 import com.example.gioele.depone.activities.adapter.ResturantAdapter;
+import com.example.gioele.depone.activities.datamodel.Resturant;
+import com.example.gioele.depone.activities.services.RestController;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class LoggedActivity extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity implements Response.Listener<String>,Response.ErrorListener {
 
     RecyclerView restourantRV;
     RecyclerView.LayoutManager manager;
     ResturantAdapter adapter;
     ArrayList<Resturant> data;
+    RestController restController;
     private boolean x=true;
 
     @Override
@@ -33,9 +48,12 @@ public class LoggedActivity extends AppCompatActivity {
         restourantRV.setAdapter(adapter);
         restourantRV.setLayoutManager(manager);
 
-
+        restController = new RestController(this);
+        restController.getRequest(Resturant.ENDPOINT, this, this);
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,7 +66,7 @@ public class LoggedActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.menu){
+        if(item.getItemId()==R.id.grid){
             if(x) {
                 x=false;
                 restourantRV.setLayoutManager(new GridLayoutManager(this, 2));
@@ -78,4 +96,25 @@ public class LoggedActivity extends AppCompatActivity {
         return data;
     }
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Log.e("errore",error.getMessage());
+        Toast.makeText(this, "response error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onResponse(String response) {
+
+        try {
+            JSONArray jsonArray = new JSONArray(response);
+            for(int i =0; i<jsonArray.length();i++){
+                data.add(new Resturant(jsonArray.getJSONObject(i)));
+            }
+            adapter.setData(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

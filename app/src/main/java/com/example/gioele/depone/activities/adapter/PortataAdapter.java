@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import me.angrybyte.numberpicker.listener.OnValueChangeListener;
 import me.angrybyte.numberpicker.view.ActualNumberPicker;
 
-import static com.example.gioele.depone.activities.CheckoutActivity.getMinimo;
-import static com.example.gioele.depone.activities.CheckoutActivity.progressBar;
+import static com.example.gioele.depone.activities.Activity.PortataActivity.getMinimo;
+import static com.example.gioele.depone.activities.Activity.PortataActivity.progressBar;
 
 
-public class CheckoutAdapter extends RecyclerView.Adapter {
+public class PortataAdapter extends RecyclerView.Adapter {
     Context context;
     private LayoutInflater inflater;
     double p;
@@ -33,10 +33,13 @@ public class CheckoutAdapter extends RecyclerView.Adapter {
 
     private ArrayList<Portata> data;
 
-    public CheckoutAdapter(Context context,ArrayList<Portata> data) {
+    public PortataAdapter(Context context, ArrayList<Portata> data) {
         this.context=context;
         this.data=data;
         this.inflater= LayoutInflater.from(context);
+    }
+    public void setData(ArrayList<Portata>data){
+        this.data=data;
     }
 
     @NonNull
@@ -68,7 +71,6 @@ public class CheckoutAdapter extends RecyclerView.Adapter {
         ImageView image;
         TextView price;
         ActualNumberPicker mPicker;
-
     public rHolder (View view){
         super(view);
         p=0;
@@ -84,15 +86,18 @@ public class CheckoutAdapter extends RecyclerView.Adapter {
                 p = ((Double.parseDouble(price.getText().toString())));
                 if(oldValue>newValue){
                     priceCount -=p;
-                    int x = getMinimo();
+                    float x = getMinimo();
                     Toast.makeText(context, "item canceled", Toast.LENGTH_SHORT).show();
                     progressBar.setProgress((int)((priceCount)),true);
                 }
                 else {priceCount+=p;
                 progressBar.setProgress((int)((priceCount)),true);
                 Toast.makeText(context, "item added", Toast.LENGTH_SHORT).show();}
+
             }
+
         });
+
     }
 }}
 

@@ -1,11 +1,10 @@
-package com.example.gioele.depone.activities;
+package com.example.gioele.depone.activities.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,10 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import com.example.gioele.depone.R;
-import com.example.gioele.depone.activities.adapter.ResturantAdapter;
-import com.example.gioele.depone.activities.datamodel.LoggedActivity;
+import com.example.gioele.depone.activities.Utilities;
 
-public class MainActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity  {
 
     Button loginButton;
     Button reginsterBtn;
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity  {
        });
 
 
-        loginButton.setEnabled(false);
+        loginButton.setEnabled(true);//per debug
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity  {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RestaurantListActivity.class);
                 startActivity(intent);
 
             }
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity  {
         reginsterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 String em = email.getText().toString();
                 intent.putExtra("email",em);
                 startActivity(intent);

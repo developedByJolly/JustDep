@@ -1,11 +1,25 @@
 package com.example.gioele.depone.activities.datamodel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Resturant {
 
 
-    private int minimo;
+    private float minimo;
     private String nome;
     private String image;
+    private String id;
+
+    public static final String ENDPOINT="restaurants/";
+
+    public Resturant(JSONObject jsonRestaurant) throws JSONException {
+        nome = jsonRestaurant.getString("name");
+        minimo = Float.valueOf(jsonRestaurant.getString("min_order"));
+        image = jsonRestaurant.getString("image_url");
+        id = jsonRestaurant.getString("id");
+
+    }
 
 
     public String getImage() {
@@ -34,7 +48,7 @@ public class Resturant {
         return nome;
     }
 
-    public int getMinimo() {
+    public float getMinimo() {
         return minimo;
     }
 
@@ -46,5 +60,13 @@ public class Resturant {
         this.nome = nome;
         this.minimo = minimo;
     }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
 }

@@ -2,20 +2,18 @@ package com.example.gioele.depone.activities.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.gioele.depone.R;
-import com.example.gioele.depone.activities.CheckoutActivity;
+import com.example.gioele.depone.activities.Activity.PortataActivity;
 import com.example.gioele.depone.activities.datamodel.Resturant;
 
 
@@ -24,7 +22,16 @@ import java.util.ArrayList;
 public class ResturantAdapter extends RecyclerView.Adapter{
 
     private LayoutInflater inflater;
-    private ArrayList<Resturant> data;
+
+    public ArrayList<Resturant> getData() {
+        return data;
+    }
+
+    public void setData(ArrayList<Resturant> data) {
+        this.data = data;
+    }
+
+    public ArrayList<Resturant> data;
     Context context;
 
     public ResturantAdapter(Context context, ArrayList<Resturant> data ) {
@@ -74,8 +81,9 @@ public class ResturantAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View v) {
 
-                   Intent intent = new Intent(context,CheckoutActivity.class);
+                   Intent intent = new Intent(context, PortataActivity.class);
                     intent.putExtra("nome",name.getText());
+                    intent.putExtra("id", data.get(getAdapterPosition()).getId());
                     intent.putExtra("minimo", minimo.getText().toString());
                     context.startActivity(intent);
                 }

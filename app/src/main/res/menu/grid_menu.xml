@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu"
+        android:id="@+id/grid"
         android:icon="@drawable/green_grid"
         app:showAsAction="always"
         android:title="griglia">

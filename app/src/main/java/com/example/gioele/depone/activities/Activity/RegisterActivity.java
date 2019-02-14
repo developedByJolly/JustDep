@@ -1,4 +1,4 @@
-package com.example.gioele.depone.activities;
+package com.example.gioele.depone.activities.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.gioele.depone.R;
+import com.example.gioele.depone.activities.Utilities;
 
 public class RegisterActivity extends AppCompatActivity {
     Intent intent;
@@ -76,12 +77,10 @@ public class RegisterActivity extends AppCompatActivity {
                                             @Override
                                             public void afterTextChanged(Editable s) {
 
-
                                             }
                                         }
         );
     }
-
     public void doImplicidIntent(){
         Uri uri = Uri.parse("mailto:"+emailTv.getText());
         Intent intento = new Intent(Intent.ACTION_SENDTO,uri);

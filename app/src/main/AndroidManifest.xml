@@ -14,7 +14,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.Activity.LoginActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN">
 
@@ -25,11 +25,11 @@
         </intent-filter>
     </activity>
 
-        <activity android:name=".activities.datamodel.LoggedActivity">
+        <activity android:name=".activities.Activity.RestaurantListActivity">
 
         </activity>
 
-        <activity android:name=".activities.RegisterActivity">
+        <activity android:name=".activities.Activity.RegisterActivity">
             <intent-filter>
 
                 <category android:name="android.intent.category.DEFAULT"></category>
@@ -39,7 +39,7 @@
 
 
         </activity>
-        <activity android:name=".activities.CheckoutActivity">
+        <activity android:name=".activities.Activity.PortataActivity">
 
         </activity>
 
